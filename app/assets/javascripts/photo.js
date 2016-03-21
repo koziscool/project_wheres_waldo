@@ -6,9 +6,7 @@ PhotosModule = (function() {
   var $currentTagObject;
 
   var clickHandlerNames = function() { 
-    console.log('clickHandlerNames')
     $('.names-content li').on('click', function(event) {
-      console.log('im here')
       bSelectNameFocus = false;
       event.stopPropagation();
 
@@ -25,7 +23,6 @@ PhotosModule = (function() {
   var mouseMoveHandler = function() {
 
     $('#photo-container').on('mousemove', function(event) {
-    console.log('mouseMoveHandler')
       if( !bSelectNameFocus ) {
           // create box around mouse cursor
         var mouseX = event.pageX;
@@ -41,7 +38,6 @@ PhotosModule = (function() {
 
   var photoClickHandler = function() {
    $('#photo-container').on('click', function(event) {
-      console.log('photoClickHandler')
       if( !bSelectNameFocus ) {
 
         var mouseX = event.pageX;

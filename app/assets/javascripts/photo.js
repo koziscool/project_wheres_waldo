@@ -14,7 +14,15 @@ PhotosModule = (function() {
       event.stopPropagation();
 
       $textDiv = $('<div class="names-text"></div>');
-      $textDiv.html( $(this).html() )
+      if( $currentTagObject.hasClass('miss') ){
+        $textDiv.addClass('miss-name');
+        $textDiv.html( 'NOT ' + $(this).html() )
+      } else {
+        $textDiv.addClass('hit-name');
+        $textDiv.html( $(this).html() )
+      }
+
+      console.log($textDiv);
 
       $nameDropdown = $currentTagObject.children().filter('.names-content')
       $nameDropdown.hide()
@@ -39,27 +47,6 @@ PhotosModule = (function() {
     });
   };
 
-     // if( !bSelectNameFocus ) {
-
-     //    var mouseX = event.pageX;
-     //    var mouseY = event.pageY;
-
-     //    var $ele = $('<div></div>');
-     //    $ele.css({left: mouseX - 25, top: mouseY - 25});
-     //    if ( mouseX <= locationLeft && locationLeft <= mouseX + 50 &&
-     //        mouseY <= locationTop && locationTop <= mouseY + 50) {
-     //      $ele.addClass('hit');
-     //    } else {
-     //      $ele.addClass('miss');          
-     //    }
-
-     //    $('#selector .names-content').show();
-     //    $ele.append($('.names-content'));
-     //    $('#photo-container').append($ele);
-
-     //    bSelectNameFocus = true;
-     //    $currentTagObject = $ele;
-
 
   var photoClickHandler = function() {
    $('#photo-container').on('click', function(event) {
@@ -68,23 +55,13 @@ PhotosModule = (function() {
         var mouseX = event.pageX;
         var mouseY = event.pageY;
 
-        // var ele = $('<div class="tag"></div>');
-        // ele.css({left: mouseX - 25, top: mouseY - 25});
-
         var $ele = $('<div></div>');
-        // debugger;
-          console.log(mouseX);
-          console.log(locationLeft);
-          console.log(mouseY);
-          console.log(locationTop);
 
         $ele.css({left: mouseX - 25, top: mouseY - 25});
         if ( mouseX <= locationLeft + 25 && locationLeft <= mouseX + 25 &&
             mouseY <= locationTop + 25 && locationTop <= mouseY + 25) {
-          console.log('hit');
           $ele.addClass('hit');
         } else {
-          console.log('miss');
           $ele.addClass('miss');          
         }
 

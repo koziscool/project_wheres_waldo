@@ -5,3 +5,15 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+seed_multiplier = 1
+
+(1*seed_multiplier).times do 
+  Location.create(  {
+    photo_name: "first_photo",
+    character_name: "Waldo",
+    left: 158,
+    top: 146
+    })
+end
